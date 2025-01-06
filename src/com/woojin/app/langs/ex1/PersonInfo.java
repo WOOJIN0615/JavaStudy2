@@ -8,7 +8,7 @@ public class PersonInfo {
 		this.data="iu, 010-1234-5678, iu@naver.com, 99-05-05,";
 		this.data=this.data+"winter, 010-2222-2222, winter@gmail.com, 01-01-01,";
 		this.data=this.data+"suji, 010-3333-3333, suji@naver.com, 93-12-24,";
-		System.out.println(this.data);
+//		System.out.println(this.data);
 	}
 	
 	//메서드명 init
@@ -34,6 +34,11 @@ public class PersonInfo {
 		}
 		
 		return persons; 
+		
+	}
+
+	public void init(Person[] persons) {
+		// TODO Auto-generated method stub
 		
 	}
 

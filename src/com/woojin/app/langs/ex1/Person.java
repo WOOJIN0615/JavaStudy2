@@ -5,6 +5,7 @@ public class Person {
 	private String phone;
 	private String email;
 	private String birth;
+	public String pname;
 	
 	
 	public String getName() {
