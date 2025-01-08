@@ -1,5 +1,6 @@
 package com.woojin.app.langs.ex2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WeatherController {
@@ -13,13 +14,14 @@ public class WeatherController {
 		this.weatherInfo=new WeatherInfo();
 		this.weatherView=new WeatherView();
 		this.sc = new Scanner(System.in);
-		WeatherDTO [] dtos = weatherInfo.init();
+		ArrayList<WeatherDTO> ar = weatherInfo.init();
 	}
 	
 	public void start() {
 		boolean check=true;
 		WeatherView wv = new WeatherView();
-		WeatherDTO[] dtos=null;
+		//WeatherDTO[] dtos=null;
+		ArrayList<WeatherDTO> ar=null;
 		int i=0;
 		while(check) {
 			System.out.println("1. 날씨정보초기화");
@@ -30,11 +32,11 @@ public class WeatherController {
 			System.out.println("6. 종료");
 			int select = sc.nextInt();
 			if (select==1) {
-				dtos=weatherInfo.init();
+				ar=weatherInfo.init();
 			}else if (select==2) {
-				weatherView.view(dtos);
+				weatherView.view(ar);
 			}else if (select==3) {
-				WeatherDTO weatherDTO = weatherInfo.find(dtos, sc);
+				WeatherDTO weatherDTO = weatherInfo.find(ar, sc);
 				if (weatherDTO!=null) {
 					weatherView.view(weatherDTO);
 				}else
@@ -42,7 +44,7 @@ public class WeatherController {
 					weatherView.view("검색한 결과가 없습니다.");
 				}
 			}else if (select==4) {
-				WeatherDTO weatherDTO = weatherInfo.add(dtos, sc);
+				WeatherDTO weatherDTO = weatherInfo.add(ar, sc);
 				if (weatherDTO!=null) {
 					weatherView.view(weatherDTO);
 				}

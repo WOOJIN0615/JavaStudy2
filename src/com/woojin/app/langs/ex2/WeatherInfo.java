@@ -1,5 +1,6 @@
 package com.woojin.app.langs.ex2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.StringTokenizer;
@@ -24,13 +25,13 @@ public class WeatherInfo {
 		this.info.append("Jeju* 56* 0.02* 건조");
 	}
 	
-	public WeatherDTO[] init() {
+	public ArrayList<WeatherDTO> init() {
 		int i=0;
 		String data=info.toString();
 		data=data.replace("*", ",");
 		StringTokenizer datas = new StringTokenizer(data, ",");
-		WeatherDTO[] weatherDTOs = new WeatherDTO[datas.countTokens()/4];
-		
+//		WeatherDTO[] weatherDTOs = new WeatherDTO[datas.countTokens()/4];
+		ArrayList<WeatherDTO> ar = new ArrayList<>();
 		int idx=0; //배열의 인덱스 번호로 사용
 		
 		while(datas.hasMoreTokens()) {
@@ -39,11 +40,11 @@ public class WeatherInfo {
 			weatherDTO.setTem(Integer.parseInt(datas.nextToken().trim()));
 			weatherDTO.setHumidity(Double.parseDouble(datas.nextToken().trim()));
 			weatherDTO.setStatus(datas.nextToken().trim());
-			weatherDTOs[idx]=weatherDTO;
-			idx++;
+			//weatherDTOs[idx]=weatherDTO;
+			ar.add(weatherDTO);
 		}
 		
-		return weatherDTOs;
+		return ar;
 		
 	}
 
@@ -64,19 +65,19 @@ public class WeatherInfo {
 		return dtos;
 	}
 	
-	public WeatherDTO find(WeatherDTO[] dtos, Scanner sc) {
+	public WeatherDTO find(ArrayList<WeatherDTO> ar, Scanner sc) {
 		System.out.println("검색할 도시명을 입력하세요");
 		String name = sc.next();
-		for (int i=0; i<dtos.length; i++) {
-			if (name.equals(dtos[i].getCity())) {
-				return dtos[i];
+		for (int i=0; i<ar.size(); i++) {
+			if (name.equals(ar.get(i).getCity())) {
+				return ar.get(i);
 			}
 		}
 		
 		return null;
 	}
 	
-	public WeatherDTO add(WeatherDTO[] dtos, Scanner sc) {
+	public WeatherDTO add(ArrayList<WeatherDTO> ar, Scanner sc) {
 		System.out.println("추가할 도시명을 입력하세요");
 		String cname = sc.next();
 		System.out.println("도시의 기온을 입력하세요");
@@ -88,10 +89,10 @@ public class WeatherInfo {
 		this.info=new StringBuffer();
 		this.info.append(cname+", "+ctem+", "+cHumidity+", "+cstatus);
 		
-		WeatherDTO[] newdtos = new WeatherDTO[dtos.length+1];
+		WeatherDTO[] newdtos = new WeatherDTO[ar.size()+1];
 		
-		for (int i=0; i<dtos.length; i++) {
-			newdtos[i] = dtos[i];
+		for (int i=0; i<ar.size(); i++) {
+			newdtos[i] = ar.get(i);
 		}
 		
 		WeatherDTO newdto = new WeatherDTO();

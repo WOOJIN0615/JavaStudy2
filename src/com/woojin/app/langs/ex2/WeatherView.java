@@ -1,5 +1,6 @@
 package com.woojin.app.langs.ex2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WeatherView {
@@ -21,15 +22,15 @@ public class WeatherView {
 		System.out.println(weatherDTO.getStatus());
 	}
 	
-	public void view(WeatherDTO [] dtos) {
+	public void view(ArrayList<WeatherDTO> ar) {
 		//WeatherDTO에 있는 정보를 출력
 		System.out.println("도시명\t기온\t습도\t날씨");
 		
-		for(int i=0; i<dtos.length; i++) {
-			System.out.print(dtos[i].getCity()+"\t");
-			System.out.print(dtos[i].getTem()+"\t");
-			System.out.print(dtos[i].getHumidity()+"\t");
-			System.out.println(dtos[i].getStatus());
+		for(int i=0; i<ar.size(); i++) {
+			System.out.print(ar.get(i).getCity()+"\t");
+			System.out.print(ar.get(i).getTem()+"\t");
+			System.out.print(ar.get(i).getHumidity()+"\t");
+			System.out.println(ar.get(i).getStatus());
 		}
 		
 	}
