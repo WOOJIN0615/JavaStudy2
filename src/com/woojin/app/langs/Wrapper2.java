@@ -1,4 +1,4 @@
-Stpackage com.woojin.app.langs;
+package com.woojin.app.langs;
 
 import java.nio.IntBuffer;
 import java.util.Scanner;
