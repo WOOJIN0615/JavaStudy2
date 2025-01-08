@@ -103,5 +103,18 @@ public class WeatherInfo {
 		
 		return newdto;
 	}
+	
+	public void delete(ArrayList<WeatherDTO> ar, Scanner sc) {
+		System.out.println("삭제할 도시명 입력");
+		String name = sc.next();
+		
+		for (int i=0; i<ar.size(); i++) {
+			if (name.equals(ar.get(i).getCity())) {
+				ar.remove(i);
+				break;
+			}
+		}
+		
+	}
 
 }

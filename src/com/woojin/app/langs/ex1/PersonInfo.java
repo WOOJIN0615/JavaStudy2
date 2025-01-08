@@ -1,5 +1,8 @@
 package com.woojin.app.langs.ex1;
 
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
 public class PersonInfo {
 	
 	private String data;
@@ -14,7 +17,7 @@ public class PersonInfo {
 	//메서드명 init
 	//data의 변수의 값을 파싱
 	
-	public Person [] init() {
+	public Person [] init_old() {
 		String [] datas = data.split(",");
 		
 		//Person 객체에 데이터를 대입
@@ -35,6 +38,20 @@ public class PersonInfo {
 		
 		return persons; 
 		
+	}
+	
+	public ArrayList<Person> init() {
+		StringTokenizer datas = new StringTokenizer(data, ",");
+		ArrayList<Person> ap = new ArrayList<>();
+		while (datas.hasMoreTokens()) {
+			Person person = new Person();
+			person.setName(datas.nextToken());
+			person.setPhone(datas.nextToken());
+			person.setEmail(datas.nextToken());
+			person.setBirth(datas.nextToken());
+			ap.add(person);
+		}
+		return ap;
 	}
 
 	public void init(Person[] persons) {

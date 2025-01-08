@@ -1,8 +1,17 @@
 package com.woojin.app.langs.ex1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PersonControler {
+	
+	private PersonInfo personinfo;
+	private PersonView personview;
+	
+	public PersonControler() {
+		
+	}
+
 	
 	
 	public void start() {
@@ -15,7 +24,7 @@ public class PersonControler {
 		PersonInfo pi = new PersonInfo();
 		PersonView pv = new PersonView();
 		PersonFactory pf = new PersonFactory();
-		Person[] persons = pi.init();
+		ArrayList<Person> ap = pi.init();
 		StringMain sm = new StringMain();
 		
 		
@@ -24,13 +33,13 @@ public class PersonControler {
 		System.out.println("원하는 번호를 입력하세요. 1. 주소록 초기화 2. 주소록 출력 3. 검색 6. 종료");
 		int select = sc.nextInt();
 			if (select==1) {
-				persons = pi.init();
+				ap=pi.init();
 			}else if (select==2) {
-				pi.init(persons);
+				pv.view(ap);
 			}else if (select==3) {
-				Person person = pf.find(persons);
+				Person person = pf.find(ap);
 				if (person != null) {
-					pi.init(persons);
+					pv.view(person);
 				}else {
 					System.out.println("일치하는 사용자가 존재하지 않습니다.");
 				}
@@ -45,5 +54,6 @@ public class PersonControler {
 		
 		
 	}
+	}
 
-}
+
