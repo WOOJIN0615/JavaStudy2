@@ -20,8 +20,12 @@ public class WeatherInfo {
 		this.info.append("Incheon* 32* 0.95* 무더위,");
 		this.info.append("Jeju* 56* 0.02* 건조");
 	}
-
+	
 	public WeatherDTO[] init() {
+		
+	}
+
+	public WeatherDTO[] init_old() {
 		int i = 0;
 		String data = info.toString();
 		data = data.replace("*", ",");
