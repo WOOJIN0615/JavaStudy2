@@ -1,12 +1,15 @@
 package com.woojin.app.langs.ex2;
 
 import java.util.Scanner;
+import java.util.Set;
+import java.util.StringTokenizer;
 
 public class WeatherInfo {
 	private Scanner sc;
 	{
 		
 	}
+	
 
 	private StringBuffer info;
 	// info의 정보를 파싱해서
@@ -22,6 +25,25 @@ public class WeatherInfo {
 	}
 	
 	public WeatherDTO[] init() {
+		int i=0;
+		String data=info.toString();
+		data=data.replace("*", ",");
+		StringTokenizer datas = new StringTokenizer(data, ",");
+		WeatherDTO[] weatherDTOs = new WeatherDTO[datas.countTokens()/4];
+		
+		int idx=0; //배열의 인덱스 번호로 사용
+		
+		while(datas.hasMoreTokens()) {
+			WeatherDTO weatherDTO = new WeatherDTO();
+			weatherDTO.setCity(datas.nextToken().trim());
+			weatherDTO.setTem(Integer.parseInt(datas.nextToken().trim()));
+			weatherDTO.setHumidity(Double.parseDouble(datas.nextToken().trim()));
+			weatherDTO.setStatus(datas.nextToken().trim());
+			weatherDTOs[idx]=weatherDTO;
+			idx++;
+		}
+		
+		return weatherDTOs;
 		
 	}
 

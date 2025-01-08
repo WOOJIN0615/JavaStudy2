@@ -6,13 +6,14 @@ public class WeatherController {
 	
 	private WeatherInfo weatherInfo;
 	private WeatherView weatherView;
+	private WeatherDTO weatherDTO;
 	private Scanner sc;
 	
 	public WeatherController() {
 		this.weatherInfo=new WeatherInfo();
 		this.weatherView=new WeatherView();
 		this.sc = new Scanner(System.in);
-		WeatherDTO[] dtos = weatherInfo.init();
+		WeatherDTO [] dtos = weatherInfo.init();
 	}
 	
 	public void start() {
