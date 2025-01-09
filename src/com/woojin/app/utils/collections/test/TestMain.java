@@ -23,7 +23,7 @@ public class TestMain {
 		
 		
 		UnitView uv = new UnitView();
-		uv.view(ar2);
+		uv.view(ar2);    
 		uv.view2(ar);
 		
 		
