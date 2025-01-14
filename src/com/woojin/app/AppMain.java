@@ -19,6 +19,8 @@ public class AppMain {
 		
 		try {
 			dd.getList();
+			System.out.println("=========================");
+			ld.getList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
