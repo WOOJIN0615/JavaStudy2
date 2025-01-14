@@ -10,7 +10,7 @@ public class ThreadMain {
 		
 		//OS 실행 부탁
 		st1.start();
-		thread.start();
+		thread  .start();
 
 	}
 
