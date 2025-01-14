@@ -16,30 +16,37 @@ public class LocationDAO {
 		//7. 연결 해제
 	public void getList() throws Exception{
 		Connection con = DBConnection.getConnection();
-		String sql = "SELECT * FROM LOCATIONS ORDER BY 2 DESC";
+		String sql = "SELECT * FROM LOCATIONS ORDER BY 4 DESC";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		
 		while (rs.next()) {
-			System.out.println(rs.getString("STREET_ADDRESS"));
+			System.out.println(rs.getString("CITY"));
 		}
 		DBConnection.disConnect(rs, ps, con);
 		
 	}
 	
 	
-	public void getDetail() throws Exception {
-		String sql = "SELECT * FROM LOCATIONS WHERE LOCATION_ID=1000";
+	public LocationDTO getDetail() throws Exception {
+		LocationDTO locationDTO=null;
 		Connection connection = DBConnection.getConnection();
+		String sql = "SELECT * FROM LOCATIONS ORDER BY 2 DESC";
 		PreparedStatement ps = connection.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		
 		if (rs.next()) {
-			System.out.println(rs.getString("STREET_ADDRESS"));
-		}else {
-			System.out.println("데이터 없음");
+			locationDTO = new LocationDTO();
+			locationDTO.setLocation_id(rs.getInt("LOCATION_ID"));
+			locationDTO.setStreet_address(rs.getString("STREET_ADDRESS"));
+			locationDTO.setPostal_code(rs.getString("POSTAL_CODE"));
+			locationDTO.setCity(rs.getString("CITY"));
+			locationDTO.setState_province(rs.getString("STATE_PROVINCE"));
+			locationDTO.setCountry_id(rs.getString("COUNTRY_ID"));
 		}
 		DBConnection.disConnect(rs, ps, connection);
+		
+		return locationDTO;
 	}
 
 }

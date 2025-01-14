@@ -1,6 +1,8 @@
 package com.woojin.app;
 
+import com.woojin.app.departments.DepartmentController;
 import com.woojin.app.departments.DepartmentDAO;
+import com.woojin.app.locations.LocationController;
 import com.woojin.app.locations.LocationDAO;
 import com.woojin.app.utils.DBConnection;
 import com.woojin.app.utils.Test;
@@ -16,11 +18,12 @@ public class AppMain {
 //		test.m1();
 		DepartmentDAO dd = new DepartmentDAO();
 		LocationDAO ld = new LocationDAO();
+		DepartmentController dc = new DepartmentController();
+		LocationController lc = new LocationController();
+		FrontController fc = new FrontController();
 		
 		try {
-			dd.getList();
-			System.out.println("=========================");
-			ld.getList();
+			fc.start();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
