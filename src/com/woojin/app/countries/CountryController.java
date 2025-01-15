@@ -1,5 +1,6 @@
 package com.woojin.app.countries;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.woojin.app.utils.DBConnection;
@@ -7,12 +8,12 @@ import com.woojin.app.utils.DBConnection;
 public class CountryController {
 	
 	
-	private CountryDAO countryDAO;
+	private CountryService countryService;
 	
 	private CountryView countryView;
 	
 	public CountryController() {
-		countryDAO = new CountryDAO();
+		countryService = new CountryService();
 		countryView = new CountryView();
 	}
 	
@@ -26,9 +27,10 @@ public class CountryController {
 			System.out.println("3. 종료");
 			int select = sc.nextInt();
 			if (select==1) {
-				countryDAO.getList();
+				List<CountryDTO> ar = countryService.getList();
+				countryView.view(ar);
 			}else if (select==2) {
-				CountryDTO countryDTO=countryDAO.getDetail();
+				CountryDTO countryDTO=countryService.getDetail(sc);
 				
 				if (countryDTO != null) {
 					countryView.view(countryDTO);
