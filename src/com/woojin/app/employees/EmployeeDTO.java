@@ -2,6 +2,8 @@ package com.woojin.app.employees;
 
 import java.sql.Date;
 
+import com.woojin.app.departments.DepartmentDTO;
+
 public class EmployeeDTO {
 	private int employee_id;
 	private String first_name;
@@ -14,8 +16,15 @@ public class EmployeeDTO {
 	private double commission_pct;
 	private int manager_id;
 	private int department_id;
+	private DepartmentDTO departmentDTO;
 	//DTO - 개체 한명의 정보
 	
+	public DepartmentDTO getDepartmentDTO() {
+		return departmentDTO;
+	}
+	public void setDepartmentDTO(DepartmentDTO departmentDTO) {
+		this.departmentDTO = departmentDTO;
+	}
 	public int getEmployee_id() {
 		return employee_id;
 	}

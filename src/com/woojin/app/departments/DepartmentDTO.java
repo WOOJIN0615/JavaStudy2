@@ -1,11 +1,16 @@
 package com.woojin.app.departments;
 
+import java.util.List;
+
+import com.woojin.app.employees.EmployeeDTO;
+
 public class DepartmentDTO {
 	
 	private int department_id;
 	private String department_name;
 	private int manager_id;
 	private int location_id;
+	private List<EmployeeDTO> employeeDTOs;
 	
 	
 	public int getDepartment_id() {

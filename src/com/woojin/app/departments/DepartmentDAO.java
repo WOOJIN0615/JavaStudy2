@@ -68,4 +68,22 @@ public class DepartmentDAO {
 		return departmentDTO;
 	}
 	
+	public DepartmentDTO getName() throws Exception {
+		Connection conn = DBConnection.getConnection();
+		String sql = "SELECT LOCATION_ID FROM DEPARTMENTS WHERE DEPARTMENT_ID=(SELECT department_id FROM EMPLOYEES WHERE FIRST_NAME = 'Lex')";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		DepartmentDTO departmentDTO=null;
+		
+		if (rs.next()) {
+			departmentDTO = new DepartmentDTO();
+			departmentDTO.setDepartment_name(rs.getString("DEPARTMENT_NAME"));
+		}
+		
+		DBConnection.disConnect(rs, ps, conn);
+		
+		return departmentDTO;
+	}
+	
 }

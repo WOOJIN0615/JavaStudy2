@@ -28,16 +28,16 @@ public class EmployeeService {
 		return ar;
 	}
 	
-	public Map<String, Object> getInfo() throws Exception {
-		Map<String, Object> map = employeeDAO.getInfo();
-		boolean check = true;
-		Set<String> keyset = map.keySet();
-		for (String key : keyset) {
-			System.out.println(key + " : " + map.get(key));
-		}
-		
-		return map;
-	}
+//	public Map<String, Object> getInfo() throws Exception {
+//		Map<String, Object> map = employeeDAO.getInfo();
+//		boolean check = true;
+//		Set<String> keyset = map.keySet();
+//		for (String key : keyset) {
+//			System.out.println(key + " : " + map.get(key));
+//		}
+//		
+//		return map;
+//	}
 	
 	
 }

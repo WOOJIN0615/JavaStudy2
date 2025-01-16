@@ -4,6 +4,7 @@ import com.woojin.app.departments.DepartmentController;
 import com.woojin.app.departments.DepartmentDAO;
 import com.woojin.app.locations.LocationController;
 import com.woojin.app.locations.LocationDAO;
+import com.woojin.app.tests.DepartmentDAOTest;
 import com.woojin.app.utils.DBConnection;
 import com.woojin.app.utils.Test;
 
@@ -21,9 +22,11 @@ public class AppMain {
 		DepartmentController dc = new DepartmentController();
 		LocationController lc = new LocationController();
 		FrontController fc = new FrontController();
+		DepartmentDAOTest dt = new DepartmentDAOTest();
 		
 		try {
-			fc.start();
+			//fc.start();
+			dt.getNameTest();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
