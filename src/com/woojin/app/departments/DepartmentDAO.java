@@ -82,8 +82,63 @@ public class DepartmentDAO {
 		}
 		
 		DBConnection.disConnect(rs, ps, conn);
-		
+		  
 		return departmentDTO;
+	}
+	
+	//Insert
+	public int add(DepartmentDTO departmentDTO) throws Exception{
+		Connection conn = DBConnection.getConnection();
+		
+		String sql = "INSERT INTO DEPARTMENTS (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID)"
+				+ " VALUES (DEPARTMENTS_SEQ.NEXTVAL, ?, ?, ?)";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		ps.setString(1, departmentDTO.getDepartment_name());
+		ps.setInt(2, departmentDTO.getManager_id());
+		ps.setInt(3, departmentDTO.getLocation_id());
+		
+		//최종 전송 (INSERT, UPDATE, DELETE)
+		//결과 int , 메서드 executeUpdate
+		int result = ps.executeUpdate();
+		
+		DBConnection.disConnect(ps, conn);
+		
+		return result;
+	}
+	
+	public int update(DepartmentDTO departmentDTO) throws Exception {
+		//하나의 부서에 매니저 번호를 수정
+		Connection conn = DBConnection.getConnection();
+		
+		String sql = "UPDATE DEPARTMENTS SET MANAGER_ID=?"
+				+ " WHERE DEPARTMENT_ID=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		ps.setInt(1, departmentDTO.getManager_id());
+		ps.setInt(2, departmentDTO.getDepartment_id());
+		
+		int result = ps.executeUpdate();
+		
+		DBConnection.disConnect(ps, conn);
+		
+		return result;
+	}
+	
+	public int delete(DepartmentDTO departmentDTO) throws Exception {
+		Connection conn = DBConnection.getConnection();
+		
+		String sql = "DELETE DEPARTMENTS WHERE DEPARTMENT_ID=?";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		ps.setInt(1, departmentDTO.getDepartment_id());
+		
+		int result = ps.executeUpdate();
+		
+		DBConnection.disConnect(ps, conn);
+		
+		return result;
 	}
 	
 }
