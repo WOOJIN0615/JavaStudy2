@@ -1,12 +1,13 @@
 package com.woojin.app.users;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.winter.app.utils.DBConnection;
+import com.woojin.app.util.DBConnection;
 
 public class UserDAO {
 	
@@ -27,7 +28,7 @@ public class UserDAO {
 		
 		int result = st.executeUpdate();
 		
-		DBConnection.disConnect(st, con);
+		DBConnection.disConnection(st, con);
 		
 		return result;
 		
@@ -50,7 +51,7 @@ public class UserDAO {
 			ar.add(userDTO);
 		}
 		
-		DBConnection.disConnect(rs, st, con);
+		DBConnection.disConnection(rs, st, con);
 		
 		return ar;
 		

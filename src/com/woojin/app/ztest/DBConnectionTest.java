@@ -2,7 +2,7 @@ package com.woojin.app.ztest;
 
 import java.sql.Connection;
 
-import com.winter.app.utils.DBConnection;
+import com.woojin.app.util.DBConnection;
 
 public class DBConnectionTest {
 	
