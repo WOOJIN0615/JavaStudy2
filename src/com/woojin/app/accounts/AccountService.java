@@ -7,7 +7,7 @@ public class AccountService {
 	//데이터를 넣은후 후처리
 	
 	public AccountService() {
-		accountDAO = new AccountDAO;
+		
 	}
 	
 	private static long count=1;
